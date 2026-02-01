@@ -22,7 +22,8 @@ services:
       - key: CORS_ORIGINS_EXTRA
         sync: false
 
-  - type: static_site
+  - type: web
+    runtime: static
     name: aiig-deliverables-frontend
     region: oregon
     rootDir: frontend
