@@ -3,7 +3,6 @@ databases:
     databaseName: aiig_deliverables
     plan: free
     region: oregon
-
 services:
   - type: web
     name: aiig-deliverables-backend
@@ -13,7 +12,6 @@ services:
     rootDir: backend
     dockerfilePath: ./Dockerfile
     healthCheckPath: /health
-    preDeployCommand: python seed.py
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -21,11 +19,9 @@ services:
           property: connectionString
       - key: CORS_ORIGINS_EXTRA
         sync: false
-
   - type: web
     runtime: static
     name: aiig-deliverables-frontend
-    region: oregon
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
