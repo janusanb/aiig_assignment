@@ -1,7 +1,3 @@
-# Render Blueprint: backend (Docker) + static frontend + free Postgres
-# After first deploy: set VITE_API_URL on the static site to your backend URL, then redeploy.
-# Set CORS_ORIGINS_EXTRA on the backend to your static site URL (e.g. https://<frontend-name>.onrender.com).
-
 databases:
   - name: aiig-deliverables-db
     databaseName: aiig_deliverables
@@ -23,11 +19,10 @@ services:
         fromDatabase:
           name: aiig-deliverables-db
           property: connectionString
-      # Set in Render dashboard: CORS_ORIGINS_EXTRA = https://<your-static-site>.onrender.com
       - key: CORS_ORIGINS_EXTRA
         sync: false
 
-  - type: static
+  - type: static_site
     name: aiig-deliverables-frontend
     region: oregon
     rootDir: frontend
