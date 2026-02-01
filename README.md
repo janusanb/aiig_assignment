@@ -1,6 +1,7 @@
 # AIIG Deliverables Tracker
 
 A full-stack web application for managing infrastructure project deliverables at Americas Infrastructure Investments Group (AIIG).
+## Access here - https://aiig-deliverables-frontend.onrender.com/
 
 ## 🎯 Features
 
@@ -142,19 +143,6 @@ npm run dev
 
 The frontend will be available at `http://localhost:5173`. It expects the backend at `http://localhost:8000` by default; to use a different API URL, set `VITE_API_URL` (e.g. in a `.env` file; see `frontend/.env.example`).
 
-## Deploy to Render (online for ~1 week)
-
-To put the app online on [Render](https://render.com) (free tier):
-
-1. **Connect the repo** to Render and create a new Blueprint from the repo (Render will detect `render.yaml`).
-2. **Deploy** — Render will create a free PostgreSQL database, build and run the backend (Docker), and build and deploy the frontend (static site). The backend runs a **pre-deploy command** (`python seed.py`) so the database is initialized and seeded on each deploy.
-3. **After the first deploy:**
-   - Copy the **backend** Web Service URL (e.g. `https://aiig-deliverables-backend.onrender.com`).
-   - In the **static site** (frontend) service, set the environment variable **VITE_API_URL** to that backend URL, then trigger a **Redeploy** so the frontend build uses the correct API URL.
-   - In the **backend** Web Service, set **CORS_ORIGINS_EXTRA** to your static site URL (e.g. `https://aiig-deliverables-frontend.onrender.com`) so the browser can call the API from the frontend.
-4. Open the static site URL to use the app.
-
-**Note:** On the free tier, the backend may spin down after ~15 minutes of inactivity; the first request after that can take up to a minute (cold start). The frontend (static) has no cold start.
 
 ## 📊 API Endpoints
 
@@ -216,24 +204,6 @@ The import flow is **parse → validate → clean → load**. Preview uses the s
 - **Monitoring**: Health checks, error tracking (Sentry)
 - **Logging**: Structured logging for debugging
 - **Updates**: Semantic versioning, changelog maintenance
-
-## 💰 Budget Estimates
-
-### Development (One-time)
-- Developer time: ~40 hours × $100/hr = **$4,000**
-
-### Hosting (Monthly)
-| Service | Cost |
-|---------|------|
-| Cloud hosting (AWS/Azure) | $50-200 |
-| Database (managed) | $25-100 |
-| Storage/Backups | $10-25 |
-| **Total** | **$85-325/month** |
-
-### Maintenance (Ongoing)
-- Bug fixes: 2-4 hrs/month
-- Updates: 2-4 hrs/month
-- **~$400-800/month**
 
 ## ⚠️ Technical Risks
 
