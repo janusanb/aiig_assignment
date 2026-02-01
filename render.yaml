@@ -28,7 +28,6 @@ services:
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
-    # Set in Render dashboard after first deploy: VITE_API_URL = https://<your-backend>.onrender.com
     envVars:
       - key: VITE_API_URL
         sync: false
