@@ -22,13 +22,13 @@ services:
       - key: CORS_ORIGINS_EXTRA
         sync: false
 
-  - type: static_site
+  - type: web
+    runtime: static
     name: aiig-deliverables-frontend
     region: oregon
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
-    # Set in Render dashboard after first deploy: VITE_API_URL = https://<your-backend>.onrender.com
     envVars:
       - key: VITE_API_URL
         sync: false
